@@ -1,0 +1,20 @@
+.product-rating-overview__filter{
+	user-select: none;
+    height: 2rem;
+    line-height: 2rem;
+    min-width: 6.25rem;
+    text-align: center;
+
+    background-color: #fff;
+    border: 1px solid rgba(0,0,0,.09);
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    display: inline-block;
+    margin-right: .5rem;
+    text-decoration: none;
+    color: rgba(0,0,0,.8);
+    text-transform: capitalize;
+    border-radius: 2px;
+    margin-bottom: .3125rem;
+    margin-top: .3125rem;
+}
