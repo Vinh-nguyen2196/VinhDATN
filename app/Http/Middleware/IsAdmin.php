@@ -17,9 +17,12 @@ class IsAdmin
      */
     public function handle($request, Closure $next)
     {
-        if (Auth::user()->level !== RoleConstant::ROLE_ADMIN) {
-            abort(403);
+        if (Auth::check()) {
+            if (Auth::user()->level !== RoleConstant::ROLE_ADMIN) {
+                abort(403);
+            }
+            return $next($request);
         }
-        return $next($request);
+        return redirect('/login');
     }
 }

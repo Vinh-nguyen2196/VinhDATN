@@ -22,7 +22,7 @@
             <div class="col-lg-12">
                 <div class="panel panel-default">
                     <div class="panel-body">
-                        <table id="users-list" data-toolbar="#toolbar" data-toggle="table">
+                        <table id="users-list" data-toolbar="#toolbar" data-toggle="table" class="p-2">
                             <thead>
                             <tr>
                                 <th data-field="id" data-sortable="true">ID</th>

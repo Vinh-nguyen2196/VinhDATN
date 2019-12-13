@@ -33,17 +33,17 @@ Route::get('trang-chu',[
 ]);
 //backend
 
-Route::get('login','AdminController@getLogin');
-Route::post('login','AdminController@postLogin');
+Route::get('login','LoginController@showFormLogin')->name('showFormLogin');
+Route::post('login','LoginController@login')->name('admin.login');
 Route::get('logout','AdminController@getLogout');
 
 
 // Route Admin
 Route::middleware('isAdmin')->prefix('admin')->group(function (){
     Route::get('/','AdminController@getDashboard')->name('admin.getDashboards');
-
     Route::prefix('/users')->group(function (){
         Route::get('/','UserController@index')->name('users.index');
+        Route::get('/create','UserController@create')->name('users.create');
     });
     Route::get('categories','AdminController@getCategory');
     Route::get('products','AdminController@getProduct');
