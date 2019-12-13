@@ -11,6 +11,8 @@
 |
 */
 
+use Illuminate\Support\Facades\Route;
+
 Route::get('/home','HomeController@getHome')->middleware('CheckMe');
 Route::get('home/my_product','HomeController@getMyProduct')->middleware('CheckMe');
 Route::get('home/reprice','HomeController@getReprice')->middleware('CheckMe');
@@ -30,22 +32,22 @@ Route::get('trang-chu',[
 	'uses'=>'PageController@getIndex'
 ]);
 //backend
-Route::get('admin',[
-    'as'=> 'admin',
-    'uses'=>'AdminController@getDarboard'
-]);
 
 Route::get('login','AdminController@getLogin');
 Route::post('login','AdminController@postLogin');
 Route::get('logout','AdminController@getLogout');
 
-Route::group(['prefix'=>'admin'],function(){
-    Route::get('user','AdminController@getUser');
-    Route::get('category','AdminController@getCategory');
-    Route::get('product','AdminController@getProduct');
 
+// Route Admin
+Route::middleware('isAdmin')->prefix('admin')->group(function (){
+    Route::get('/','AdminController@getDashboard')->name('admin.getDashboards');
+
+    Route::prefix('/users')->group(function (){
+        Route::get('/','UserController@index')->name('users.index');
+    });
+    Route::get('categories','AdminController@getCategory');
+    Route::get('products','AdminController@getProduct');
 });
-
 
 
 
@@ -56,7 +58,7 @@ Route::get('loai-san-pham/{type}',[
 ]);
 Route::get('chi-tiet-san-pham/{id_prd}',[
       'as'=>'chitietsanpham',
-      'uses'=>'PageController@getChitiet'  
+      'uses'=>'PageController@getChitiet'
 
 ]);
 Route::get('dang-nhap',[
