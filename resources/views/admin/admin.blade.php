@@ -19,14 +19,16 @@
 <!--Icons-->
 <script src="admin_asset/js/lumino.glyphs.js"></script>
 <script src="admin_asset/js/jquery-1.11.1.min.js"></script>
-	<script src="admin_asset/js/bootstrap.min.js"></script>	
-	<script src="admin_asset/js/bootstrap-table.js"></script>	
+	<script src="admin_asset/js/bootstrap.min.js"></script>
+	<script src="admin_asset/js/bootstrap-table.js"></script>
 
 <!--[if lt IE 9]>
 <script src="js/html5shiv.js"></script>
 <script src="js/respond.min.js"></script>
 <![endif]-->
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs4/jq-3.3.1/dt-1.10.20/datatables.min.css"/>
 
+    <script type="text/javascript" src="https://cdn.datatables.net/v/bs4/jq-3.3.1/dt-1.10.20/datatables.min.js"></script>
 </head>
 
 <body>
@@ -50,10 +52,10 @@
 							</li>
 						</ul>
 					</div>
-									
+
 				</div><!-- /.container-fluid -->
 			</nav>
-		
+
 	<div id="sidebar-collapse" class="col-sm-3 col-lg-2 sidebar">
 		<form role="search">
 			<div class="form-group">
@@ -62,7 +64,7 @@
 		</form>
 		<ul class="nav menu">
 			<li class="active"><a href="admin.php"><svg class="glyph stroked dashboard-dial"><use xlink:href="#stroked-dashboard-dial"></use></svg> Dashboard</a></li>
-			<li><a href="admin/user"><svg class="glyph stroked male user "><use xlink:href="#stroked-male-user"/></svg>Quản lý thành viên</a></li>
+			<li><a href="{{ route('users.index') }}"><svg class="glyph stroked male user "><use xlink:href="#stroked-male-user"/></svg>Quản lý thành viên</a></li>
 			<li><a href="admin/category"><svg class="glyph stroked open folder"><use xlink:href="#stroked-open-folder"/></svg>Quản lý danh mục</a></li>
 			<li><a href="admin/product"><svg class="glyph stroked bag"><use xlink:href="#stroked-bag"></use></svg>Quản lý sản phẩm</a></li>
 			<li><a href="#"><svg class="glyph stroked two messages"><use xlink:href="#stroked-two-messages"/></svg> Quản lý bình luận</a></li>
@@ -72,9 +74,6 @@
 
 	</div><!--/.sidebar-->
 		@yield('noi-dung')
-	
-
-	
 </body>
 
 </html>
