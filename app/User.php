@@ -20,6 +20,13 @@ class User extends Authenticatable
         return $this->hasMany('App\Notify','id_user_receive','id');
     }
 
+    public function delete()
+    {
+        $this->Product()->delete();
+        $this->Comment()->delete();
+        $this->Notify()->delete();
+        return parent::delete();
+    }
 
 
     /**

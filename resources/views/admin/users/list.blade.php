@@ -45,10 +45,17 @@
                                     <td style="">{{ ++$key }}</td>
                                     <td style="">{{ $user->full_name }}</td>
                                     <td style="">{{ $user->email }}</td>
-                                    <td><span class="label label-danger">Admin</span></td>
+                                    <td>
+                                        @if($user->level == \App\Http\Controllers\RoleConstant::ROLE_ADMIN)
+                                        <span class="label label-danger">Admin</span>
+                                        @endif
+                                            @if($user->level == \App\Http\Controllers\RoleConstant::ROLE_USER)
+                                                <span class="label label-success">Member</span>
+                                            @endif
+                                    </td>
                                     <td class="form-group">
                                         <a href="thanhvien-edit.html" class="btn btn-primary"><i class="glyphicon glyphicon-pencil"></i></a>
-                                        <a href="/" class="btn btn-danger"><i class="glyphicon glyphicon-remove"></i></a>
+                                        <a href="{{ route('users.destroy', $user->id) }}" class="btn btn-danger" onclick="return confirm('This will delete all user data! You definitely want to delete?')"><i class="glyphicon glyphicon-remove"></i></a>
                                     </td>
                                 </tr>
                             @endforeach
