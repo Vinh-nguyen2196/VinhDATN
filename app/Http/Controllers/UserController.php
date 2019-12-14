@@ -35,4 +35,12 @@ class UserController extends Controller
         Session::flash('success','Create user success!');
         return redirect()->route('users.index');
     }
+
+    public function destroy($id)
+    {
+        $user = $this->user->findOrFail($id);
+        $user->delete();
+        Session::flash('success','Delete user success!');
+        return redirect()->route('users.index');
+    }
 }
