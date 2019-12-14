@@ -14,11 +14,18 @@
             </div>
         </div><!--/.row-->
         <div id="toolbar" class="btn-group">
-            <a href="thanhvien-add.html" class="btn btn-success">
+            <a href="{{ route('users.create') }}" class="btn btn-success">
                 <i class="glyphicon glyphicon-plus"></i> Thêm thành viên
             </a>
         </div>
         <div class="row">
+            <div class="col-12">
+                @if(\Illuminate\Support\Facades\Session::has('success'))
+                    <div class="alert alert-success m-2">
+                        <span class="">{{ \Illuminate\Support\Facades\Session::get('success') }}</span>
+                    </div>
+                @endif
+            </div>
             <div class="col-lg-12">
                 <div class="panel panel-default">
                     <div class="panel-body">

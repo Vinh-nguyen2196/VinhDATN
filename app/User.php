@@ -19,8 +19,8 @@ class User extends Authenticatable
     public function Notify(){
         return $this->hasMany('App\Notify','id_user_receive','id');
     }
-    
-    
+
+
 
     /**
      * The attributes that are mass assignable.
@@ -28,7 +28,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'full_name', 'email', 'password', 'phone', 'level', 'address'
     ];
 
     /**

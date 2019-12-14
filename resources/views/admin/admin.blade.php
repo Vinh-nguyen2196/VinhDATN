@@ -65,7 +65,7 @@
 		</form>
 		<ul class="nav menu">
 			<li class="{{ (request()->is('admin')) ? 'active-menu' : '' }}"><a href="{{ route('admin.getDashboards') }}"><svg class="glyph stroked dashboard-dial"><use xlink:href="#stroked-dashboard-dial"></use></svg> Dashboard</a></li>
-			<li class="{{ (request()->is('admin/users')) ? 'active-menu' : '' }}"><a href="{{ route('users.index') }}" ><svg class="glyph stroked male user "><use xlink:href="#stroked-male-user"/></svg>Quản lý thành viên</a></li>
+			<li class="{{ (request()->is('admin/users')) || (request()->is('admin/users/create')) ? 'active-menu' : '' }}"><a href="{{ route('users.index') }}" ><svg class="glyph stroked male user "><use xlink:href="#stroked-male-user"/></svg>Quản lý thành viên</a></li>
 			<li><a href="admin/category"><svg class="glyph stroked open folder"><use xlink:href="#stroked-open-folder"/></svg>Quản lý danh mục</a></li>
 			<li><a href="admin/product"><svg class="glyph stroked bag"><use xlink:href="#stroked-bag"></use></svg>Quản lý sản phẩm</a></li>
 			<li><a href="#"><svg class="glyph stroked two messages"><use xlink:href="#stroked-two-messages"/></svg> Quản lý bình luận</a></li>

@@ -44,6 +44,7 @@ Route::middleware('isAdmin')->prefix('admin')->group(function (){
     Route::prefix('/users')->group(function (){
         Route::get('/','UserController@index')->name('users.index');
         Route::get('/create','UserController@create')->name('users.create');
+        Route::post('/create','UserController@store')->name('users.store');
     });
     Route::get('categories','AdminController@getCategory');
     Route::get('products','AdminController@getProduct');
