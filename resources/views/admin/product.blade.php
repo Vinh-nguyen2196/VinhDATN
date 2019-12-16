@@ -39,65 +39,29 @@
 						    </tr>
                             </thead>
                             <tbody>
+                                @foreach($product as $row)
                                     <tr>
-                                        <td style="">1</td>
-                                        <td style="">Sản phẩm số 1</td>
-                                        <td style="">Bán</td>
-                                        <td style="text-align: center"><img width="130" height="180" src="admin_asset/img/dotho.jpg" /></td>
-                                        <td>Vũ Quang Vinh</td>
-                                        <td>Danh mục số 1</td>
+                                    <td style="">{{$row->id}}</td>
+                                        <td style="">{{$row->name}}</td>
+                                        <td style="">{{$row->state}}</td>
+                                        <td style="text-align: center"><img width="130" height="180" src="source/image/product/{{$row->image}}" /></td>
+                                        <td>{{$row->user->full_name}}</td>
+                                        <td>{{$row->product_type->name}}</td>
                                         <td class="form-group">
                                             <a href="product-edit.html" class="btn btn-primary"><i class="glyphicon glyphicon-pencil"></i></a>
                                             <a href="product-edit.html" class="btn btn-danger"><i class="glyphicon glyphicon-remove"></i></a>
                                         </td>
                                     </tr>
-                                    <tr>
-                                            <td style="">1</td>
-                                            <td style="">Sản phẩm số 2</td>
-                                            <td style="">Tặng</td>
-                                            <td style="text-align: center"><img width="130" height="180" src="admin_asset/img/tranh.jpg" /></td>
-                                            <td>Kien Hà</td>
-                                            <td>Danh mục số 1</td>
-                                            <td class="form-group">
-                                                <a href="product-edit.html" class="btn btn-primary"><i class="glyphicon glyphicon-pencil"></i></a>
-                                                <a href="product-edit.html" class="btn btn-danger"><i class="glyphicon glyphicon-remove"></i></a>
-                                            </td>
-                                        </tr>
-                                    <tr>
-                                        <td style="">3</td>
-                                        <td style="">Sản phẩm số 1</td>
-                                        <td style="">Đổi</td>
-                                        <td style="text-align: center"><img width="130" height="180" src="admin_asset/img/vay.jpg" /></td>
-                                        <td>Nguyễn Xuân Vinh</td>
-                                        <td>Danh mục số 1</td>
-                                        <td class="form-group">
-                                            <a href="product-edit.html" class="btn btn-primary"><i class="glyphicon glyphicon-pencil"></i></a>
-                                            <a href="product-edit.html" class="btn btn-danger"><i class="glyphicon glyphicon-remove"></i></a>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td style="">4</td>
-                                        <td style="">Sản phẩm số 1</td>
-                                        <td style="">Cho thuê</td>
-                                        <td style="text-align: center"><img width="130" height="180" src="admin_asset/img/ghe.jpg" /></td>
-                                        <td>Phuong Nguyen</td>
-                                        <td>Danh mục số 1</td>
-                                        <td class="form-group">
-                                            <a href="product-edit.html" class="btn btn-primary"><i class="glyphicon glyphicon-pencil"></i></a>
-                                            <a href="product-edit.html" class="btn btn-danger"><i class="glyphicon glyphicon-remove"></i></a>
-                                        </td>
-                                    </tr>
+                                @endforeach
+                                   
                                  </tbody>
-						</table>
+                        </table>
+                        
                     </div>
                     <div class="panel-footer">
                         <nav aria-label="Page navigation example">
                             <ul class="pagination">
-                                <li class="page-item"><a class="page-link" href="#">&laquo;</a></li>
-                                <li class="page-item"><a class="page-link" href="#">1</a></li>
-                                <li class="page-item"><a class="page-link" href="#">2</a></li>
-                                <li class="page-item"><a class="page-link" href="#">3</a></li>
-                                <li class="page-item"><a class="page-link" href="#">&raquo;</a></li>
+                                {{$product->links()}}
                             </ul>
                         </nav>
                     </div>

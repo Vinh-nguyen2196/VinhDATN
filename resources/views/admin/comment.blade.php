@@ -5,19 +5,17 @@
 		<div class="row">
 			<ol class="breadcrumb">
 				<li><a href="#"><svg class="glyph stroked home"><use xlink:href="#stroked-home"></use></svg></a></li>
-				<li class="active">Quản lý danh mục</li>
+				<li class="active">Quản lý bình luận</li>
 			</ol>
 		</div><!--/.row-->
 		
 		<div class="row">
 			<div class="col-lg-12">
-				<h1 class="page-header">Quản lý danh mục</h1>
+				<h1 class="page-header">Quản lý bình luận</h1>
 			</div>
 		</div><!--/.row-->
 		<div id="toolbar" class="btn-group">
-            <a href="category-add.html" class="btn btn-success">
-                <i class="glyphicon glyphicon-plus"></i> Thêm danh mục
-            </a>
+           
         </div>
 		<div class="row">
 			<div class="col-md-12">
@@ -30,22 +28,28 @@
 									<thead>
 									<tr>
 										<th data-field="id" data-sortable="true">ID</th>
-										<th>Tên danh mục</th>
-										<th>Hành động</th>
+										<th>Người bình luận</th>
+                                        <th>Sản phẩm</th>
+                                        <th>Nội dung</th>
+                                        <th>Ngày bình luận</th>
+                                        <th>Hành động</th>
 									</tr>
 									</thead>
 									<tbody>
-										@foreach($type as $row)
+									@foreach($comment as $row)
 										<tr>
-										<td style="">{{$row->id}}</td>
-										<td style="">{{$row->name}}</td>
+                                        <td style="">{{$row->id}}</td>
+                                        <td style="">{{$row->user_comment->full_name}}</td>
+                                        <td style="">{{$row->prd->name}}</td>
+                                        <td style="">{{$row->content_cmt}}</td>
+                                        <td style="">{{$row->created_at}}</td>
 											<td class="form-group">
 												<a href="/" class="btn btn-primary"><i class="glyphicon glyphicon-pencil"></i></a>
 												<a href="/" class="btn btn-danger"><i class="glyphicon glyphicon-remove"></i></a>
 											</td>
 										</tr>
-										@endforeach
 									
+									@endforeach
 									</tbody>
 								</table>
 							</div>

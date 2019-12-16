@@ -23,7 +23,9 @@ class LoginController extends Controller
         if (Auth::attempt($data)) {
             return redirect()->route("admin.getDashboards");
         }
+        else{
         Session::flash('login-error','Tài khoản không chính xác!');
         return redirect()->route('showFormLogin');
+        }
     }
 }

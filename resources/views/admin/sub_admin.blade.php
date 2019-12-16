@@ -22,7 +22,7 @@
 							<svg class="glyph stroked bag"><use xlink:href="#stroked-bag"></use></svg>
 						</div>
 						<div class="col-sm-9 col-lg-7 widget-right">
-							<div class="large">120</div>
+						<div class="large">{{$product->count()}}</div>
 							<div class="text-muted">Sản Phẩm</div>
 						</div>
 					</div>
@@ -35,7 +35,7 @@
 							<svg class="glyph stroked empty-message"><use xlink:href="#stroked-empty-message"></use></svg>
 						</div>
 						<div class="col-sm-9 col-lg-7 widget-right">
-							<div class="large">52</div>
+						<div class="large">{{$comment->count()}}</div>
 							<div class="text-muted">Bình Luận</div>
 						</div>
 					</div>
@@ -48,7 +48,7 @@
 							<svg class="glyph stroked male-user"><use xlink:href="#stroked-male-user"></use></svg>
 						</div>
 						<div class="col-sm-9 col-lg-7 widget-right">
-							<div class="large">24</div>
+						<div class="large">{{$user->count()}}</div>
 							<div class="text-muted">Thành Viên</div>
 						</div>
 					</div>

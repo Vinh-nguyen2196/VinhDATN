@@ -47,8 +47,15 @@ Route::middleware('isAdmin')->prefix('admin')->group(function (){
         Route::post('/create','UserController@store')->name('users.store');
         Route::get('/{id}/delete','UserController@destroy')->name('users.destroy');
     });
-    Route::get('categories','AdminController@getCategory');
-    Route::get('products','AdminController@getProduct');
+    Route::prefix('/categories')->group(function (){
+        Route::get('/','AdminController@getCategory');
+    });
+    Route::prefix('/products')->group(function (){
+    Route::get('/','AdminController@getProduct');
+    });
+    Route::prefix('/comments')->group(function (){
+        Route::get('/','AdminController@getComment');
+        });
 });
 
 

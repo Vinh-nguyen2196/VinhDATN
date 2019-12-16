@@ -42,7 +42,7 @@
 							<span class="icon-bar"></span>
 							<span class="icon-bar"></span>
 						</button>
-						<a class="navbar-brand" href="#"><span>Vinh-</span>Nguyễn</a>
+					<a class="navbar-brand" href="#">{{Auth::user()->full_name}}</a>
 						<ul class="user-menu">
 							<li class="dropdown pull-right">
 								<a href="#" class="dropdown-toggle" data-toggle="dropdown"><svg class="glyph stroked male-user"><use xlink:href="#stroked-male-user"></use></svg> {{ Auth::user()->full_name }} <span class="caret"></span></a>
@@ -66,9 +66,9 @@
 		<ul class="nav menu">
 			<li class="{{ (request()->is('admin')) ? 'active-menu' : '' }}"><a href="{{ route('admin.getDashboards') }}"><svg class="glyph stroked dashboard-dial"><use xlink:href="#stroked-dashboard-dial"></use></svg> Dashboard</a></li>
 			<li class="{{ (request()->is('admin/users')) || (request()->is('admin/users/create')) ? 'active-menu' : '' }}"><a href="{{ route('users.index') }}" ><svg class="glyph stroked male user "><use xlink:href="#stroked-male-user"/></svg>Quản lý thành viên</a></li>
-			<li><a href="admin/category"><svg class="glyph stroked open folder"><use xlink:href="#stroked-open-folder"/></svg>Quản lý danh mục</a></li>
-			<li><a href="admin/product"><svg class="glyph stroked bag"><use xlink:href="#stroked-bag"></use></svg>Quản lý sản phẩm</a></li>
-			<li><a href="#"><svg class="glyph stroked two messages"><use xlink:href="#stroked-two-messages"/></svg> Quản lý bình luận</a></li>
+			<li class="{{ (request()->is('admin/categories')) || (request()->is('admin/categories/create')) ? 'active-menu' : '' }}"><a href="admin/categories"><svg class="glyph stroked open folder"><use xlink:href="#stroked-open-folder"/></svg>Quản lý danh mục</a></li>
+			<li class="{{ (request()->is('admin/products')) || (request()->is('admin/products/create')) ? 'active-menu' : '' }}"><a href="admin/products"><svg class="glyph stroked bag"><use xlink:href="#stroked-bag"></use></svg>Quản lý bài viết</a></li>
+			<li class="{{ (request()->is('admin/comments')) || (request()->is('admin/comments/create')) ? 'active-menu' : '' }}"><a href="#"><svg class="glyph stroked two messages"><use xlink:href="#stroked-two-messages"/></svg> Quản lý bình luận</a></li>
 			<li><a href="#"><svg class="glyph stroked chain"><use xlink:href="#stroked-chain"/></svg> Quản lý quảng cáo</a></li>
 			<li><a href="#"><svg class="glyph stroked gear"><use xlink:href="#stroked-gear"/></svg> Cấu hình</a></li>
 		</ul>
