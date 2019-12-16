@@ -54,7 +54,7 @@
                                             @endif
                                     </td>
                                     <td class="form-group">
-                                        <a href="thanhvien-edit.html" class="btn btn-primary"><i class="glyphicon glyphicon-pencil"></i></a>
+                                        <a href="{{ route('users.update', $user->id) }}" class="btn btn-primary"><i class="glyphicon glyphicon-pencil"></i></a>
                                         <a href="{{ route('users.destroy', $user->id) }}" class="btn btn-danger" onclick="return confirm('This will delete all user data! You definitely want to delete?')"><i class="glyphicon glyphicon-remove"></i></a>
                                     </td>
                                 </tr>

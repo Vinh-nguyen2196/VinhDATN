@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\CreateUserRequest;
+use App\Http\Requests\UpdateUserRequest;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -41,6 +42,24 @@ class UserController extends Controller
         $user = $this->user->findOrFail($id);
         $user->delete();
         Session::flash('success','Delete user success!');
+        return redirect()->route('users.index');
+    }
+
+    public function update($id)
+    {
+        $user = $this->user->findOrFail($id);
+        return view('admin.users.edit', compact('user'));
+    }
+
+    public function edit(UpdateUserRequest $request, $id)
+    {
+        $user = $this->user->findOrFail($id);
+        $user->full_name = $request->full_name;
+        $user->phone = $request->phone;
+        $user->address = $request->address;
+        $user->level = $request->level;
+        $user->save();
+        Session::flash('success','Update user success!');
         return redirect()->route('users.index');
     }
 }
