@@ -47,6 +47,7 @@ Route::middleware('isAdmin')->prefix('admin')->group(function (){
         Route::post('/create','UserController@store')->name('users.store');
         Route::get('/{id}/delete','UserController@destroy')->name('users.destroy');
         Route::get('/{id}/edit','UserController@update')->name('users.update');
+        Route::post('/{id}/edit','UserController@edit')->name('users.edit');
     });
     Route::get('categories','AdminController@getCategory');
     Route::get('products','AdminController@getProduct');

@@ -29,7 +29,7 @@
                                     </ul>
                                 </div>
                             @endif
-                            <form role="form" method="post" action="">
+                            <form role="form" method="post" action="{{ route('users.edit', $user->id) }}">
                                 @csrf
                                 <div class="form-group">
                                     <label>Họ & Tên</label>
@@ -61,7 +61,7 @@
                                             value="{{\App\Http\Controllers\RoleConstant::ROLE_USER}}">Member</option>
                                     </select>
                                 </div>
-                                <button name="sbm" type="submit" class="btn btn-success">Thêm mới</button>
+                                <button name="sbm" type="submit" class="btn btn-success">Cập nhật</button>
                                 <button type="reset" class="btn btn-default">Làm mới</button>
                             </form>
                         </div>
