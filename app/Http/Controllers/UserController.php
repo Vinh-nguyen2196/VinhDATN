@@ -43,4 +43,10 @@ class UserController extends Controller
         Session::flash('success','Delete user success!');
         return redirect()->route('users.index');
     }
+
+    public function update($id)
+    {
+        $user = $this->user->findOrFail($id);
+        return view('admin.users.edit', compact('user'));
+    }
 }
