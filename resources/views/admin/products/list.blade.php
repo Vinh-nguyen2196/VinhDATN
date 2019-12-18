@@ -18,7 +18,7 @@
             </div>
         </div><!--/.row-->
         <div id="toolbar" class="btn-group">
-            <a class="btn btn-success">
+            <a href="{{route('products.create')}}" class="btn btn-success">
                 <i class="glyphicon glyphicon-plus"></i> Thêm bài viết
             </a>
         </div>
