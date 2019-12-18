@@ -40,13 +40,14 @@
                                 <th data-field="name" data-sortable="true">Tên</th>
                                 <th data-field="user" data-sortable="true">Người đăng</th>
                                 <th>Thể loại</th>
-                                <th>Mô tả</th>
+                                <th class="p-5">Mô tả</th>
                                 <th>Đơn giá</th>
                                 <th>Trạng thái</th>
                                 <th>Giá khuyến mại</th>
                                 <th>Ảnh</th>
                                 <th>Đơn vị</th>
                                 <th>Mới</th>
+                                <th>Chức năng</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -85,7 +86,7 @@
                                     <td>
                                         @if($product->image)
                                             <img width="130" height="180"
-                                                 src="source/image/product/{{$product->image}}"/>
+                                                 src="{{asset('storage/' . $product->image )}}"/>
                                         @else
                                             <span>Không có dữ liệu</span>
                                         @endif
@@ -103,6 +104,10 @@
                                         @else
                                             <span>Sản phẩm cũ</span>
                                         @endif
+                                    </td>
+                                    <td class="form-group row">
+                                        <a href="{{ route('users.update', $product->id) }}" class="btn btn-primary"><i class="glyphicon glyphicon-pencil"></i></a>
+                                        <a href="{{ route('products.destroy', $product->id) }}" class="btn btn-danger" onclick="return confirm('This will delete all user data! You definitely want to delete?')"><i class="glyphicon glyphicon-remove"></i></a>
                                     </td>
                                 </tr>
                             @endforeach
