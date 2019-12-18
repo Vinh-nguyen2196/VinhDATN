@@ -57,6 +57,8 @@ Route::middleware('isAdmin')->prefix('admin')->group(function () {
         Route::get('/create', 'ProductController@create')->name('products.create');
         Route::post('/create', 'ProductController@store')->name('products.store');
         Route::get('/{id}/delete', 'ProductController@destroy')->name('products.destroy');
+        Route::get('/{id}/edit', 'ProductController@update')->name('products.update');
+        Route::post('/{id}/edit', 'ProductController@edit')->name('products.edit');
     });
     Route::prefix('/comments')->group(function () {
         Route::get('/', 'AdminController@getComment');
