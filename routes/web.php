@@ -50,8 +50,17 @@ Route::middleware('isAdmin')->prefix('admin')->group(function () {
         Route::post('/{id}/edit', 'UserController@edit')->name('users.edit');
     });
     Route::prefix('/categories')->group(function () {
-        Route::get('/', 'AdminController@getCategory');
+        Route::get('/', 'AdminController@getCategory')->name('categories.index');
+        Route::get('/create', 'CategoryProductController@create')->name('categories.create');
+        Route::post('/create', 'CategoryProductController@store')->name('categories.store');
+        Route::get('/{id}/delete', 'CategoryProductController@delete')->name('categories.delete');
+        Route::get('/{id}/update', 'CategoryProductController@update')->name('categories.update');
+        Route::post('/{id}/update', 'CategoryProductController@edit')->name('categories.edit');
     });
+//    Route::prefix('/products')->group(function () {
+//        Route::get('/', 'AdminController@getProduct');
+//        Route::get('/', 'AdminController@getCategory');
+//    });
     Route::prefix('/products')->group(function () {
         Route::get('/', 'ProductController@getAll')->name('products.index');
         Route::get('/create', 'ProductController@create')->name('products.create');
