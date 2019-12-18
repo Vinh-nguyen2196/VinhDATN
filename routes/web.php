@@ -53,7 +53,7 @@ Route::middleware('isAdmin')->prefix('admin')->group(function (){
         Route::get('/','AdminController@getCategory');
     });
     Route::prefix('/products')->group(function (){
-    Route::get('/','AdminController@getProduct');
+    Route::get('/','ProductController@getAll');
     });
     Route::prefix('/comments')->group(function (){
         Route::get('/','AdminController@getComment');
