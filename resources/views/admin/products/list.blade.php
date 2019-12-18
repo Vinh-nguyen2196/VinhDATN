@@ -106,7 +106,7 @@
                                         @endif
                                     </td>
                                     <td class="form-group row">
-                                        <a href="{{ route('users.update', $product->id) }}" class="btn btn-primary"><i class="glyphicon glyphicon-pencil"></i></a>
+                                        <a href="{{ route('products.update', $product->id) }}" class="btn btn-primary"><i class="glyphicon glyphicon-pencil"></i></a>
                                         <a href="{{ route('products.destroy', $product->id) }}" class="btn btn-danger" onclick="return confirm('This will delete all user data! You definitely want to delete?')"><i class="glyphicon glyphicon-remove"></i></a>
                                     </td>
                                 </tr>
