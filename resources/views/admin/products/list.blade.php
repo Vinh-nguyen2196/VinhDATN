@@ -40,7 +40,6 @@
                                 <th data-field="name" data-sortable="true">Tên</th>
                                 <th data-field="user" data-sortable="true">Người đăng</th>
                                 <th>Thể loại</th>
-                                <th class="p-5">Mô tả</th>
                                 <th>Đơn giá</th>
                                 <th>Trạng thái</th>
                                 <th>Giá khuyến mại</th>
@@ -62,9 +61,6 @@
                                     </td>
                                     <td style="">
                                         {{ $product->product_type->name }}
-                                    </td>
-                                    <td>
-                                        {{$product->description}}
                                     </td>
                                     <td>
                                         {{$product->unit_price}}
