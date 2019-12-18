@@ -43,8 +43,20 @@ class ProductController extends Controller
             'state' => $request->state,
             'new' => 1,
         ];
+        if ($request->image){
+            $image = $request->image;
+            $data['image'] = $image->store('images', 'public');
+        }
         $this->product->create($data);
         Session::flash('success','Create product success!');
+        return redirect()->route('products.index');
+    }
+
+    public function destroy($id)
+    {
+        $product = $this->product->findOrFail($id);
+        $product->delete();
+        Session::flash('success','Delete product success!');
         return redirect()->route('products.index');
     }
 }
