@@ -4,6 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Trang quản trị</title>
+    @toastr_css
 <base href="{{asset('')}}">
 
 <link href="admin_asset/css/bootstrap.min.css" rel="stylesheet">
@@ -13,6 +14,9 @@
 
 <link rel="stylesheet" href="admin_asset/css/home.css">
 <link rel="stylesheet" href="admin_asset/css/product.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.4/toastr.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.4/toastr.min.css">
+
 <script src="admin_asset/js/jquery-3.3.1.js"></script>
 <script src="admin_asset/js/bootstrap.js"></script>
 
@@ -76,5 +80,7 @@
 	</div><!--/.sidebar-->
 		@yield('noi-dung')
 </body>
-
+@jquery
+@toastr_js
+@toastr_render
 </html>

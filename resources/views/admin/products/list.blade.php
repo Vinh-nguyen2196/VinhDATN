@@ -23,13 +23,13 @@
             </a>
         </div>
         <div class="row">
-            <div class="col-12">
-                @if(\Illuminate\Support\Facades\Session::has('success'))
-                    <div class="alert alert-success m-2">
-                        <span class="">{{ \Illuminate\Support\Facades\Session::get('success') }}</span>
-                    </div>
-                @endif
-            </div>
+{{--            <div class="col-12">--}}
+{{--                @if(\Illuminate\Support\Facades\Session::has('success'))--}}
+{{--                    <div class="alert alert-success m-2">--}}
+{{--                        <span class="">{{ \Illuminate\Support\Facades\Session::get('success') }}</span>--}}
+{{--                    </div>--}}
+{{--                @endif--}}
+{{--            </div>--}}
             <div class="col-lg-12">
                 <div class="panel panel-default">
                     <div class="panel-body">
