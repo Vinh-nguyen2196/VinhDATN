@@ -1,7 +1,7 @@
 	@extends('master')
 	@section('content')
 	<div class="inner-header">
-		<div class="container">	
+		<div class="container">
 			<div class="pull-left">
 				<h5 class="inner-title">Sản Phẩm :{{$sanpham->name}}</h5>
 			</div>
@@ -34,7 +34,7 @@
 							<h2 class="h__detail__gia ng-binding" style="font-size:25px;color: #38393a; !important">{{$sanpham->name}}</h2>
 								<p class="single-item-price">
 									<h4 class="h__detail__gia ng-binding" style="padding-bottom: 20px;color: #f16257;border-bottom: 1px solid #2b0b0b" ><i style="font-size: 17px !important" class="fa fa-usd" aria-hidden="true"></i> Giá: {{number_format($sanpham->unit_price)}} VNĐ</h4>
-									
+
 									<h4 class="media-heading ng-binding"  ><i class="fa fa-user" style="font-size: 17px"></i><a href="detail-user/{{$sanpham->user->id}}"> Người đăng: {{$sanpham->user->full_name}}</a></h4>
 									<h4 class="media-heading ng-binding"  ><i class="fa fa-home" style="font-size: 17px"></i> Địa chỉ: {{$sanpham->user->address}} </h4>
 									<h4 style="padding-bottom:20px;margin-top: 15px;border-bottom: 1px solid #bdb8b8" class="h__detail__gia ng-binding" typesell=""><i style="font-size: 17px !important; color: green;" class="fa fa-check-square" aria-hidden="true"></i> :  {{$sanpham->state}}</h4>
@@ -52,7 +52,7 @@
 <p>Options:</p>
 @if(Auth::check())
 
-						
+
 <button style="width: 30%;background-color:#3d99a3;border-color:#3d99a3;    box-shadow: 0 2px 0 #2b7b84!important; " type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
 	<i class="fa fa-usd"style="color: #fff"></i>
   Trả giá
@@ -65,7 +65,7 @@
 	@if(count($rate)==0)
 		<button style="width: 30%;background-color: #3d99a3;border-color:#3d99a3;    box-shadow: 0 2px 0 #2b7b84!important; " type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal3">
 				<i class="fa fa-exclamation" style="color: #fff"></i>
-			đánh giá 
+			đánh giá
 			</button>
 	@else
 		@if(count($rateOfme) == 0)
@@ -75,13 +75,13 @@
 			</button>
 		@endif
 @endif
-	
-		
-	
-	
-		
-		
-		
+
+
+
+
+
+
+
 
 
 @endif
@@ -94,7 +94,7 @@
 		  <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 		  <h4 class="modal-title price" id="myModalLabel">Đánh giá người rao tin</h4>
 		</div>
-  
+
 	<form action="{{route('rate',['id_user_rated'=>$sanpham->user->id,'id_product'=>$sanpham->id])}}" method="get" name="form-price" role="form" accept-charset="utf-8" ">
 		  <input type="hidden" name="_token" value="{{ csrf_token() }}"/>
 		<div class="modal-body rating">
@@ -126,10 +126,10 @@
 				  <textarea style="margin-bottom: 25px;" class="form-control" rows="3" name="cmt"></textarea>
 
 
-			
+
 		</div>
 		<div class="modal-footer price">
-		  
+
 		  <button name="sbm" style="background-color:#a08080; " type="submit" class="btn btn-primary">Gửi</button>
 		</div>
 		</form>
@@ -151,10 +151,10 @@
       <div class="modal-body price">
       	<span>Giá bạn đưa ra là: </span>
         <input type="text" name="re_price" /> VNĐ<br>
-      	
+
       </div>
       <div class="modal-footer price">
-        
+
         <button name="sbm" style="background-color:#a08080; " type="submit" class="btn btn-primary">Gửi</button>
       </div>
       </form>
@@ -180,9 +180,9 @@
       	@endforeach
       	@else
       	<label for="khong co">Bạn đang không có sản phẩm nào!<br>Vui lòng đăng kí tài khoản!!!</label>
-      
 
-      	@endif        	
+
+      	@endif
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>
@@ -192,16 +192,16 @@
     </div>
   </div>
 </div>
-			
+
 						</div>
 					</div>
-					
+
 
 					<div class="space40">&nbsp;</div>
 					@if(Auth::check())
 					@if(session('thongbao'))
-					
-					@php 
+
+					@php
 					echo '<div class="alert alert-success" style="text-align: center;" role="alert">';
 					    echo '<i style="font-size: 17px !important; color: green;" class="fa fa-check-square" aria-hidden="true"></i><strong> Đã bình tuận</strong>';
 					    echo '</div>';
@@ -209,19 +209,19 @@
 					@endif
 					<div class="well">
 						<h4>Viết bình luận...<span class="glyphicon glyphicon-pencil"></span></h4>
-						<form action="comment/{{$sanpham->id}}" method="post" role="form" accept-charset="utf-8">
+						<form action="{{route('comment.create',['id'=>$sanpham->id])}}" method="post" role="form" accept-charset="utf-8">
 							<input type="hidden" name="_token" value="{{ csrf_token() }}"/>
 							<div class="form-group">
-								<textarea style="margin-bottom: 25px;" class="form-control" rows="3" name="content"></textarea>
+								<textarea style="margin-bottom: 25px;" class="form-control" rows="3" name="body"></textarea>
 								<button style="background-color: #2196f3 border-radius:5px;" type="submit" class="btn btn-primary">Gửi</button>
 							</div>
 						</form>
 					</div>
-					
+
 					<hr>
-					
+
 					@endif
-		
+
 		<!-- list-comment -->
 					@foreach($commentsOfProduct as $cmt)
 							<div class="media">
@@ -233,14 +233,14 @@
 									<small>{{ $cmt->created_at }}</small>
 									</h4>
 									{{ $cmt->content_cmt }}
-									
+
 								</div>
-								
+
 							</div>
 					@endforeach
 
 				{{ $commentsOfProduct->render() }}
-					
+
 
 
 
@@ -252,7 +252,7 @@
 						<h3 class="widget-title">Bài viết hôm nay</h3>
 						@foreach($new_product as $new)
 						<div class="widget-body">
-							
+
 							<div class="beta-sales beta-lists">
 								<div class="media beta-sales-item">
 									<a class="pull-left" href="{{route('chitietsanpham',$new->id)}}"><img src="source/image/product/{{$new->image}}" alt=""height="250px" width="250px"></a>
@@ -261,22 +261,22 @@
 
 										<p class="single-item-price">
 
-										
+
 											@if($new->state=='tặng'||$new->unit_price==null)
 											<span style="color:#f16257"><font><i style="font-size: 17px !important" class="fa fa-usd" aria-hidden="true"></i> miễn phí</font></span>
 											@else
 											<span style="color:#f16257"><font><i style="font-size: 17px !important" class="fa fa-usd" aria-hidden="true"></i> {{number_format($new->unit_price)}} vnđ</font></span>
 											@endif
-											
 
-											
+
+
 										</p>
 
 									</div>
 								</div>
 
 							</div>
-							
+
 						</div>
 						@endforeach
 					</div> <!-- best sellers widget -->
@@ -321,19 +321,19 @@
 									</h4>
 									@for($star=1;$star<=$ra->rate;$star++)
 									<span class="glyphicon glyphicon-star"></span>
-									
+
 									@endfor
 									<p>{{$ra->cmt}}</p>
-									
+
 								</div>
 					</div>
 					@endforeach
 							</div>
-				
+
 
 
 					</div> --}}
-	
+
 		<div class="space50">&nbsp;</div>
 		<div class="beta-products-list">
 			<h4>Bài Viết Mới</h4>
@@ -382,5 +382,5 @@
 
 	<!-- #content -->
 
-	
+
 	@endsection

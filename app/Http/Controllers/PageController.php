@@ -34,12 +34,12 @@ class PageController extends Controller
         }
 
         return view('page.trangchu',compact('slide','new_product','sanpham_hientang','notify','count'));
-       
-        
-        
 
 
-		
+
+
+
+
 	}
 	public function getLoaiSP($type){
 		$sp_theoloai = product::where('id_type',$type)->get();
@@ -59,16 +59,16 @@ class PageController extends Controller
         // $comment=DB::table('comments')->where('id_prd',$req->id_prd)->get();
        $rate=Rating::where('id_product',$req->id_prd)->get();
        //$rateOfme=Rating::where('id_user_rate',Auth::user()->id)->where('id_product',$req->id_prd)->get();
-       
+
        //dd($my_schedule);
-    
+
         $prd=product::find($req->id_prd);
         $commentsOfProduct=product::find($req->id_prd)->Comment()->paginate(4);
         $sanpham = product::where('id', $req->id_prd)->first();
     	$new_product =DB::table('products')->select('products.id','name','id_type','description','unit_price','state','image','full_name','address')->join("users", "users.id","=","products.id_user")->where('state','tặng')->orderBy('products.created_at', 'desc')->paginate(4);
        if(Auth::check()){
         $my_schedule=Schedules::where('id_user_nhan',Auth::user()->id)->where('id_prd_doi',$req->id_prd)->where('ismeet',2)->get();
-        
+
         $rateOfme=Rating::where('id_user_rate',Auth::user()->id)->where('id_product',$req->id_prd)->get();
        $my_product= DB::table('products')->where('id_user', Auth::user()->id)->get();
         }
@@ -151,7 +151,7 @@ class PageController extends Controller
 		$sanpham_hientang=DB::table('products')->select('products.id','name','id_type','description','unit_price','state','image','full_name','address')->join("users", "users.id","=","products.id_user")->where('state','tặng')->orderBy('products.created_at', 'desc')->paginate(8);
 		$new_product = DB::table('products')->join("users", "users.id","=","products.id_user")->orderBy('products.created_at', 'desc')->paginate(8);
 		Log::debug("========== : ".$new_product);
-		
+
 		      return redirect('/trang-chu')->with(['flag'=>'success','message'=>'đăng nhập thành công']);
      	}
         else{
@@ -168,7 +168,7 @@ class PageController extends Controller
 
     public function getAddPost( ){
 
-    	
+
     	$Productype=Productype::get();
         $count=0;
         if(Auth::check()){
@@ -177,13 +177,13 @@ class PageController extends Controller
         else{
             $notify=null;
         }
-    
+
     	return view('page.post',compact('Productype','notify','count'));
-  
+
 
 }
 	public function savePost(Request $req){
-		// điền những thông tin cần lấy ra đây, rồi save vào db 
+		// điền những thông tin cần lấy ra đây, rồi save vào db
 			$this->validate($req,
      		[
                 'nameproduct'=>'required',
@@ -196,35 +196,35 @@ class PageController extends Controller
      			  'pic.required'=>'vui lòng chọn ảnh',
      			   'theloai.required'=>'vui lòng chọn thể loại',
      			    'state.required'=>'vui lòng chọn trạng thái',
-     			 
+
      		]
      	);
 
-		 $image = $req->file('pic'); 
-		
+		 $image = $req->file('pic');
+
 		 	$imagename=$image->getClientOriginalName();
 		 	$image->move('source/image/product/',$imagename);
 
-		
+
 		 //product::create($input);
 
-	
-		
-		
+
+
+
         $nameproduct = $req->input('nameproduct');
 		//$type        = $req->theloai;//thể loại chưa get từ server về
 		$description   = $req->description;
 		//$pic          = $req->pic;//ảnh
 		//$state       = $req->state;
 
-		// viết rồi lưu vào db 
+		// viết rồi lưu vào db
 		$product = new product();
-		
+
 		$product->id_user= Auth::user()->id;
-		
+
 		$product->id_type= $req->theloai;
-		
-		
+
+
 
 		$product->name=$nameproduct;
 		//$product->id_type=$type;
@@ -344,7 +344,7 @@ public function getSearch(Request $req){
     $comment->id_prd=$id_sp;
     $comment->id_user_comment=Auth::user()->id;
 
-    $comment->content_cmt=$req->content;
+//    $comment->content_cmt=$req->content;
     $comment->save();
     return redirect()->back()->with('thongbao','thanh cong');
  }
@@ -371,7 +371,7 @@ public function getSearch(Request $req){
 
 
  public function getNotify(){
-     
+
     if(Auth::check()){
         $notifyOfUser=Auth::user()->Notify()->paginate(8);
         $notify=DB::table('notifies')->where('id_user_receive',Auth::user()->id)->get();
@@ -387,7 +387,7 @@ public function getSearch(Request $req){
     return redirect()->back();
  }
  function getMyProduct(){
-    
+
      if(Auth::check()){
         $my_prd=product::where('id_user',Auth::user()->id)->get();
         $notify=DB::table('notifies')->where('id_user_receive',Auth::user()->id)->get();
@@ -402,17 +402,16 @@ public function getSearch(Request $req){
      $user= User::find($id_user);
      $rate=Rating::where('id_user_rated',$id_user)->paginate(8);
      $new_product=product::where('id_user',$id_user)->get();
-     
+
     if(Auth::check()){
-       
+
         $notify=DB::table('notifies')->where('id_user_receive',Auth::user()->id)->get();
         }
         else{
             $notify=null;
-          
+
         }
      return view('page.detail-user',compact('notify','user','new_product','rate'));
  }
- 
+
 }
-	
