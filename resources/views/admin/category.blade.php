@@ -51,7 +51,7 @@
                                         <a href="{{route('categories.update',['id'=>$row->id])}}" class="btn btn-primary"><i
                                                 class="glyphicon glyphicon-pencil"></i></a>
                                         <a href="{{route('categories.delete',['id'=>$row->id])}}"
-                                           class="btn btn-danger" onclick="return confirm('Are you sure want to delete?')"><i class="glyphicon glyphicon-remove" ></i></a>
+                                           class="btn btn-danger" onclick="return confirm('Ban co chac chan muon xoa hay khong')"><i class="glyphicon glyphicon-remove" ></i></a>
                                     </td>
 
                                 </tr>
@@ -60,17 +60,17 @@
                             </tbody>
                         </table>
                     </div>
-                    <div class="panel-footer">
-                        <nav aria-label="Page navigation example">
-                            <ul class="pagination">
-                                <li class="page-item"><a class="page-link" href="#">&laquo;</a></li>
-                                <li class="page-item"><a class="page-link" href="#">1</a></li>
-                                <li class="page-item"><a class="page-link" href="#">2</a></li>
-                                <li class="page-item"><a class="page-link" href="#">3</a></li>
-                                <li class="page-item"><a class="page-link" href="#">&raquo;</a></li>
-                            </ul>
-                        </nav>
-                    </div>
+{{--                    <div class="panel-footer">--}}
+{{--                        <nav aria-label="Page navigation example">--}}
+{{--                            <ul class="pagination">--}}
+{{--                                <li class="page-item"><a class="page-link" href="#">&laquo;</a></li>--}}
+{{--                                <li class="page-item"><a class="page-link" href="#">1</a></li>--}}
+{{--                                <li class="page-item"><a class="page-link" href="#">2</a></li>--}}
+{{--                                <li class="page-item"><a class="page-link" href="#">3</a></li>--}}
+{{--                                <li class="page-item"><a class="page-link" href="#">&raquo;</a></li>--}}
+{{--                            </ul>--}}
+{{--                        </nav>--}}
+{{--                    </div>--}}
                 </div>
             </div>
         </div><!--/.row-->

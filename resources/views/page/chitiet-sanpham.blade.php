@@ -225,14 +225,18 @@
 		<!-- list-comment -->
 					@foreach($commentsOfProduct as $cmt)
 							<div class="media">
-								<a class="pull-left href="#" ">
-									<img class="media-object" src="../public/image/user.png" alt="">
-								</a>
 								<div class="media-body" style="display: inline;">
-									<h4 class="media-heading">{{ $cmt->user_comment->full_name }}
-									<small>{{ $cmt->created_at }}</small>
-									</h4>
-									{{ $cmt->content_cmt }}
+                                    <div class="col col-md-1">
+                                        <img src="https://file.vforum.vn/hinh/2014/5/anh-dai-dien-facebook-5.jpg" style="width: 50px">
+                                    </div>
+                                    <div class="col-md-10">
+                                        <h4 class="media-heading"><b>{{ $cmt->user_comment->full_name }}</b>
+                                            <small>{{ $cmt->created_at }}</small>
+                                        </h4>
+                                        {{ $cmt->content_cmt }}
+
+                                    </div>
+
 
 								</div>
 
