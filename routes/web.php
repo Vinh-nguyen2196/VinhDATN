@@ -70,7 +70,8 @@ Route::middleware('isAdmin')->prefix('admin')->group(function () {
         Route::post('/{id}/edit', 'ProductController@edit')->name('products.edit');
     });
     Route::prefix('/comments')->group(function () {
-        Route::get('/', 'AdminController@getComment');
+        Route::get('/', 'AdminController@getComment')->name('comments.index');
+        Route::get('/{id}/delete','AdminController@deleteComment')->name('comments.delete');
     });
 });
 Route::middleware('auth')->post('/products/{id}/create/comment','CommentController@create')->name('comment.create');
