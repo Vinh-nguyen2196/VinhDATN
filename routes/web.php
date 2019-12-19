@@ -73,7 +73,7 @@ Route::middleware('isAdmin')->prefix('admin')->group(function () {
         Route::get('/', 'AdminController@getComment');
     });
 });
-
+Route::middleware('auth')->post('/products/{id}/create/comment','CommentController@create')->name('comment.create');
 
 Route::get('loai-san-pham/{type}', [
     'as' => 'loaisanpham',
