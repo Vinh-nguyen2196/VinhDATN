@@ -30,18 +30,28 @@ class UserController extends Controller
 
     public function store(CreateUserRequest $request)
     {
-        $data = $request->all();
-        $data['password'] = Hash::make($request->password);
-        $this->user->create($data);
-        Session::flash('success','Create user success!');
+        try {
+            $data = $request->all();
+            $data['password'] = Hash::make($request->password);
+            $this->user->create($data);
+            toastr()->success('Tạo mới người dùng thành công ');
+        }catch (\Exception $exception){
+            toastr()->error('Thao tác thêm mới lỗi ');
+        }
+
         return redirect()->route('users.index');
     }
 
     public function destroy($id)
     {
-        $user = $this->user->findOrFail($id);
-        $user->delete();
-        Session::flash('success','Delete user success!');
+        try {
+            $user = $this->user->findOrFail($id);
+            $user->delete();
+            toastr()->success('Xóa người dùng thành công ');
+        }catch (\Exception $exception){
+            toastr()->error('Thao tác xóa lỗi ');
+        }
+
         return redirect()->route('users.index');
     }
 
@@ -53,13 +63,18 @@ class UserController extends Controller
 
     public function edit(UpdateUserRequest $request, $id)
     {
-        $user = $this->user->findOrFail($id);
-        $user->full_name = $request->full_name;
-        $user->phone = $request->phone;
-        $user->address = $request->address;
-        $user->level = $request->level;
-        $user->save();
-        Session::flash('success','Update user success!');
+        try {
+            $user = $this->user->findOrFail($id);
+            $user->full_name = $request->full_name;
+            $user->phone = $request->phone;
+            $user->address = $request->address;
+            $user->level = $request->level;
+            $user->save();
+            toastr()->success('Cập nhật thành công ');
+        }catch (\Exception $exception){
+            toastr()->error('Thao tác cập nhật lỗi ');
+        }
+
         return redirect()->route('users.index');
     }
 }
