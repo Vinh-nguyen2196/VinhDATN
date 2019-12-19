@@ -50,8 +50,6 @@
                                     </td>
                                     <td style="">{{$row->created_at}}</td>
                                     <td class="form-group">
-                                        <a href="/" class="btn btn-primary"><i
-                                                class="glyphicon glyphicon-pencil"></i></a>
                                         <a href="{{route('comments.delete',['id'=>$row->id])}}" class="btn btn-danger"
                                            onclick="return confirm('Ban co chac chan muon xoa hay khong?')"><i
                                                 class="glyphicon glyphicon-remove"></i></a>
@@ -77,6 +75,10 @@
             </div>
         </div><!--/.row-->
     </div>    <!--/.main-->
+    @if(session('message'))
+
+
+    @endif
     <script>
         $(document).ready(function () {
             $('#comments-list').DataTable();

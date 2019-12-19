@@ -4,8 +4,9 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Đồ cũ</title>
+    @toastr_css
 	<base href="{{asset(' ')}}"/>
-	
+
 	<link href='http://fonts.googleapis.com/css?family=Dosis:300,400' rel='stylesheet' type='text/css'>
 	<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300' rel='stylesheet' type='text/css'>
 	<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css">
@@ -23,7 +24,7 @@
 	<link href="admin_asset/css/styles.css" rel="stylesheet">
 	<link rel="stylesheet" type="text/css" href="css/style-vote.css">
 
-	
+
 	<!-- include js files -->
 	<script src="source/assets/dest/js/jquery.js"></script>
 	<script src="source/assets/dest/vendors/jqueryui/jquery-ui-1.10.4.custom.min.js"></script>
@@ -39,7 +40,7 @@
 	<script src="source/assets/dest/js/wow.min.js"></script>
 	<!--customjs-->
 	<script src="source/assets/dest/js/custom2.js"></script>
-	
+
 
 </head>
 <body>
@@ -51,7 +52,7 @@
 	</div> <!-- .container -->
 
 	@include('footer')
-	
+
 
 
 	<script>
@@ -69,5 +70,7 @@
 		})
 	</script>
 </body>
-
+@jquery
+@toastr_js
+@toastr_render
 </html>

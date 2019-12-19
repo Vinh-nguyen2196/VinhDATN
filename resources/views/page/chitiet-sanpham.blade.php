@@ -244,10 +244,6 @@
 					@endforeach
 
 				{{ $commentsOfProduct->render() }}
-
-
-
-
 		<!-- end list-comment -->
 
 				</div>

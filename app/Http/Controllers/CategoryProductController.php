@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\CreateCategoryPrductRequest;
 use App\Productype;
+use Egulias\EmailValidator\Exception\AtextAfterCFWS;
 use Illuminate\Http\Request;
 
 class CategoryProductController extends Controller
@@ -16,21 +17,33 @@ class CategoryProductController extends Controller
 
     public function store(CreateCategoryPrductRequest $request)
     {
+        try {
 
-        $productCategory = new Productype();
-        $productCategory->name = $request->name;
-        $productCategory->description = $request->description;
-        if ($request->file('image')) {
-            $path = $request->file('image')->store('images', 'public');
-            $productCategory->image = $path;
+            $productCategory = new Productype();
+            $productCategory->name = $request->name;
+            $productCategory->description = $request->description;
+            if ($request->file('image')) {
+                $path = $request->file('image')->store('images', 'public');
+                $productCategory->image = $path;
+            }
+            $productCategory->save();
+            toastr()->success('Thêm danh mục thành công ');
+        }catch (\Exception $exception){
+            toastr()->error('Thao tác thêm mới có lỗi ');
         }
-        $productCategory->save();
         return redirect()->route('categories.index');
     }
 
     public function delete($id)
     {
-        Productype::destroy($id);
+        try {
+            Productype::destroy($id);
+            toastr()->success('Xóa danh mục thành công ');
+        }
+        catch (\Exception $exception){
+            toastr()->error('Thao tác xóa có lỗi ');
+        }
+
         return redirect()->route('categories.index');
     }
 
@@ -42,18 +55,21 @@ class CategoryProductController extends Controller
 
     public function edit(CreateCategoryPrductRequest $request, $id)
     {
-        $productCategory = Productype::find($id);
-        $productCategory->name = $request->name;
-        $productCategory->description = $request->description;
-        if ($request->file('image')) {
-            $currentImg = $productCategory->image;
-            if ($currentImg) {
-                unlink(storage_path('app/public/' . $currentImg));
+        try {
+            $productCategory = Productype::find($id);
+            $productCategory->name = $request->name;
+            $productCategory->description = $request->description;
+            if ($request->file('image')) {
+                $path = $request->file('image')->store('images', 'public');
+                $productCategory->image = $path;
             }
-            $path = $request->file('image')->store('images', 'public');
-            $productCategory->image = $path;
+            $productCategory->save();
+            toastr()->success('Cập nhật thành công ');
         }
-        $productCategory->save();
+        catch (\Exception $exception){
+            toastr()->error('Thao tác cập nhập có lỗi rồi');
+        }
+
         return redirect()->route('categories.index');
     }
 }

@@ -9,6 +9,7 @@ use App\Productype;
 use App\Comments;
 use App\product;
 use DB;
+use Illuminate\Support\Facades\Session;
 
 class AdminController extends Controller
 {
@@ -45,6 +46,7 @@ class AdminController extends Controller
     function deleteComment($id)
     {
         Comments::destroy($id);
+        toastr()->success('Xóa bình luận thành công !');
         return redirect()->route('comments.index');
     }
 }
